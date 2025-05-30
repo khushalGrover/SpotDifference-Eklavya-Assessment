@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/",
+    "name": "home",
+    "component": "Home"
+  },
+  {
+    "path": "/about",
+    "name": "about",
+    "component": "About"
+  },
+  {
+    "path": "/spot-difference",
+    "name": "spot-difference",
+    "component": "SpotDifference"
+  }
+]

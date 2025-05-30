@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
 import { Clock, Trophy, RotateCcw, CheckCircle } from "lucide-react";
-import { HowToPlay } from "./HowToPlay";
+import { HowToPlay } from "../components/HowToPlay";
 // import gameConfig from public
 import gameConfig from "../../public/game-config.json";
 
-export default function SpotTheDifferenceGame() {
+export default function GameScreen() {
   const [foundDifferences, setFoundDifferences] = useState(new Set());
   const [gameStarted, setGameStarted] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);

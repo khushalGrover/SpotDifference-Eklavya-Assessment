@@ -1,14 +1,12 @@
-import { useState } from "react";
-import "./App.css";
-import SpotTheDifferenceGame from "./components/SpotTheDifferenceGame";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "@/routes/AppRouter";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <SpotTheDifferenceGame />
-    </>
+    <BrowserRouter>
+      <AppRouter fallback={<div>Loading...</div>} />
+    </BrowserRouter>
   );
 }
 
