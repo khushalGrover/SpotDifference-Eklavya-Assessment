@@ -4,8 +4,12 @@ import { getGameConfig, saveGameConfig } from "../utils/gameConfigUtils";
 export default function AdminScreen() {
   const [config, setConfig] = useState(getGameConfig());
   const [imagePath, setImagePath] = useState(config.levels[0].imagePath || "");
-  const [imagePath2, setImagePath2] = useState(config.levels[0].imagePath2 || "");
-  const [differences, setDifferences] = useState(config.levels[0].differences || []);
+  const [imagePath2, setImagePath2] = useState(
+    config.levels[0].imagePath2 || ""
+  );
+  const [differences, setDifferences] = useState(
+    config.levels[0].differences || []
+  );
 
   console.log("AdminScreen config", config.levels[0]);
   const handleDifferenceChange = (index, field, value) => {
@@ -15,7 +19,7 @@ export default function AdminScreen() {
   };
 
   const addDifference = () => {
-    setDifferences([...differences, { x: 0, y: 0 }]);
+    setDifferences([...differences, { x: 0, y: 0 , width: 50, height: 50}]);
   };
 
   const removeDifference = (index) => {
@@ -23,9 +27,22 @@ export default function AdminScreen() {
   };
 
   const saveConfig = () => {
-    const newConfig = { imagePath, imagePath2, differences };
+    const newConfig = {
+      levels: [
+        {
+          name: config.levels[0].name || "City",
+          thumbNail: config.levels[0].thumbNail || "/images/city1.png",
+          isCompleted: false,
+          isLocked: false,
+          imagePath,
+          imagePath2,
+          differences,
+        },
+      ],
+    };
+
     saveGameConfig(newConfig);
-    alert("Config saved to localStorage!", newConfig);
+    alert("Config saved to localStorage!");
   };
 
   return (
@@ -73,7 +90,10 @@ export default function AdminScreen() {
 
       <br />
       <br />
-      <button onClick={saveConfig} style={{ background: "#4caf50", color: "#fff", padding: "10px 20px" }}>
+      <button
+        onClick={saveConfig}
+        style={{ background: "#4caf50", color: "#fff", padding: "10px 20px" }}
+      >
         💾 Save Config
       </button>
     </div>

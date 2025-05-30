@@ -13,19 +13,25 @@ export default function HomeScreen() {
           </CardTitle>
           <ul className="flex flex-col items-center justify-center space-y-4 mt-6">
             <li>
-              <Button variant="myButton" size="lg">
-                <Link to="/play">Start</Link>
-              </Button>
+              <Link to="/play">
+                <Button variant="myButton" size="lg">
+                  Start
+                </Button>
+              </Link>
             </li>
             <li>
-              <Button variant="myButton" size="lg">
-                <Link to="/about">How To Play?</Link>
-              </Button>
+              <Link to="/about">
+                <Button variant="myButton" size="lg">
+                  How To Play?
+                </Button>
+              </Link>
             </li>
             <li>
-              <Button variant="myButton" size="lg">
-                <Link to="/admin">ADMIN Settings</Link>
-              </Button>
+              <Link to="/admin">
+                <Button variant="myButton" size="lg">
+                  ADMIN Settings
+                </Button>
+              </Link>
             </li>
             <li>
               <Button variant="myButton" size="lg">
