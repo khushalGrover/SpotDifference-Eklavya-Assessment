@@ -36,7 +36,7 @@ export default function GameScreen() {
 
   useEffect(() => {
     if (
-      foundDifferences.size === gameConfig.differences.length &&
+      foundDifferences.size === gameConfig.levels[0].differences.length &&
       gameStarted
     ) {
       setGameCompleted(true);
@@ -59,8 +59,7 @@ export default function GameScreen() {
     setElapsedTime(0);
     setClickAnimation(null);
   };
-  console.log("gameConfig", gameConfig.imagePath);
-  console.log("gameConfig", gameConfig.imagePath2);
+
   const handleImageClick = (event, imageIndex) => {
     if (!gameStarted || gameCompleted) return;
 
@@ -73,7 +72,7 @@ export default function GameScreen() {
     const scaledX = x * scaleX;
     const scaledY = y * scaleY;
 
-    const clickedDifference = gameConfig.differences.findIndex(
+    const clickedDifference = gameConfig.levels[0].differences.findIndex(
       (diff, index) => {
         if (foundDifferences.has(index)) return false;
         return (
@@ -128,7 +127,7 @@ export default function GameScreen() {
   };
 
   const renderDifferenceMarkers = (imageIndex) => {
-    return gameConfig.differences.map((diff, index) => {
+    return gameConfig.levels[0].differences.map((diff, index) => {
       if (!foundDifferences.has(index)) {
         return null;
       } else {
@@ -169,10 +168,10 @@ export default function GameScreen() {
         <Card className="mb-6">
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-bold text-gray-800">
-              {gameConfig.gameTitle}
+              {gameConfig.levels[0].name}
             </CardTitle>
             <p className="text-gray-600">
-              Find all {gameConfig.differences.length} differences between the
+              Find all {gameConfig.levels[0].differences.length} differences between the
               two images!
             </p>
             <HowToPlay />
@@ -182,7 +181,7 @@ export default function GameScreen() {
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <Badge variant="outline" className="text-lg p-3">
             <Trophy className="w-5 h-5 mr-2" />
-            Score: {foundDifferences.size}/{gameConfig.differences.length}
+            Score: {foundDifferences.size}/{gameConfig.levels[0].differences.length}
           </Badge>
           <Badge variant="outline" className="text-lg p-3">
             <Clock className="w-5 h-5 mr-2" />
@@ -212,7 +211,7 @@ export default function GameScreen() {
                 Congratulations! 🎉
               </h2>
               <p className="text-green-700">
-                You found all {gameConfig.differences.length} differences in{" "}
+                You found all {gameConfig.levels[0].differences.length} differences in{" "}
                 {formatTime(elapsedTime)}!
               </p>
             </CardContent>
@@ -228,7 +227,7 @@ export default function GameScreen() {
               <CardContent className="p-0">
                 <div ref={imageRef} className="relative cursor-crosshair">
                   <img
-                    src={gameConfig.imagePath}
+                    src={gameConfig.levels[0].imagePath}
                     alt="Spot the difference - Image 1"
                     className="w-full h-auto max-h-96 object-contain"
                     draggable={false}
@@ -247,7 +246,7 @@ export default function GameScreen() {
               <CardContent className="p-0">
                 <div className="relative cursor-crosshair">
                   <img
-                    src={gameConfig.imagePath2}
+                    src={gameConfig.levels[0].imagePath2}
                     alt="Spot the difference - Image 2"
                     className="w-full h-auto max-h-96 object-contain"
                     draggable={false}

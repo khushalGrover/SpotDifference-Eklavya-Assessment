@@ -3,10 +3,11 @@ import { getGameConfig, saveGameConfig } from "../utils/gameConfigUtils";
 
 export default function AdminScreen() {
   const [config, setConfig] = useState(getGameConfig());
-  const [imagePath, setImagePath] = useState(config.imagePath || "");
-  const [imagePath2, setImagePath2] = useState(config.imagePath2 || "");
-  const [differences, setDifferences] = useState(config.differences || []);
+  const [imagePath, setImagePath] = useState(config.levels[0].imagePath || "");
+  const [imagePath2, setImagePath2] = useState(config.levels[0].imagePath2 || "");
+  const [differences, setDifferences] = useState(config.levels[0].differences || []);
 
+  console.log("AdminScreen config", config.levels[0]);
   const handleDifferenceChange = (index, field, value) => {
     const updated = [...differences];
     updated[index][field] = parseInt(value);
