@@ -7,9 +7,11 @@ import { Badge } from "../components/ui/badge";
 import { Clock, Trophy, RotateCcw, CheckCircle } from "lucide-react";
 import { HowToPlay } from "../components/HowToPlay";
 // import gameConfig from public
-import gameConfig from "../../public/game-config.json";
+// import gameConfig from "../../public/game-config.json";
+import { getGameConfig } from "../utils/gameConfigUtils";
 
 export default function GameScreen() {
+  const gameConfig = getGameConfig();
   const [foundDifferences, setFoundDifferences] = useState(new Set());
   const [gameStarted, setGameStarted] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
@@ -57,7 +59,8 @@ export default function GameScreen() {
     setElapsedTime(0);
     setClickAnimation(null);
   };
-  console.log("gameConfig", gameConfig.images.image1);
+  console.log("gameConfig", gameConfig.imagePath);
+  console.log("gameConfig", gameConfig.imagePath2);
   const handleImageClick = (event, imageIndex) => {
     if (!gameStarted || gameCompleted) return;
 
@@ -225,7 +228,7 @@ export default function GameScreen() {
               <CardContent className="p-0">
                 <div ref={imageRef} className="relative cursor-crosshair">
                   <img
-                    src={gameConfig.images.image1}
+                    src={gameConfig.imagePath}
                     alt="Spot the difference - Image 1"
                     className="w-full h-auto max-h-96 object-contain"
                     draggable={false}
@@ -244,7 +247,7 @@ export default function GameScreen() {
               <CardContent className="p-0">
                 <div className="relative cursor-crosshair">
                   <img
-                    src={gameConfig.images.image2}
+                    src={gameConfig.imagePath2}
                     alt="Spot the difference - Image 2"
                     className="w-full h-auto max-h-96 object-contain"
                     draggable={false}
