@@ -1,8 +1,8 @@
 {
   "gameTitle": "Spot the Difference - Nature Scene",
   "images": {
-    "image1": "/images/512.jpg",
-    "image2": "/images/512.jpg"
+    "image1": "/images/600x400.png",
+    "image2": "/images/600x400.png"
   },
   "differences": [
     { "x": 120, "y": 80, "width": 40, "height": 40 },
