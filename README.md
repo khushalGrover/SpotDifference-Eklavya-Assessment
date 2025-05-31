@@ -70,7 +70,7 @@ Note: Changes are saved only in your browser's local storage and are not persist
 ## 📁 How JSON Configuration Works
 
 ### Default JSON Location:
-The default game configuration is stored in `public/game-config.json`.
+The default game configuration is stored in `utils/game-config.json`.
 
 Example:
 ```json
