@@ -2,8 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import HowToPlay from "../components/HowToPlay";
+
 
 export default function HomeScreen() {
+
+
   return (
     <div className="max-w-3xl min-h-[100vh] mx-auto flex items-center justify-center">
       <Card className="m-10 w-full bg-grey-50 shadow-lg">
@@ -20,11 +24,9 @@ export default function HomeScreen() {
               </Link>
             </li>
             <li>
-              <Link to="/about">
-                <Button variant="myButton" size="lg">
-                  How To Play?
-                </Button>
-              </Link>
+              <Button variant="myButton" size="lg">
+                <HowToPlay />
+              </Button>
             </li>
             <li>
               <Link to="/admin">

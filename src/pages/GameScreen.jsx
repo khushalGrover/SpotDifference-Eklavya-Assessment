@@ -1,8 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Clock, Trophy, RotateCcw, CheckCircle } from "lucide-react";
 import { HowToPlay } from "../components/HowToPlay";
@@ -171,8 +177,8 @@ export default function GameScreen() {
               {gameConfig.levels[0].name}
             </CardTitle>
             <p className="text-gray-600">
-              Find all {gameConfig.levels[0].differences.length} differences between the
-              two images!
+              Find all {gameConfig.levels[0].differences.length} differences
+              between the two images!
             </p>
             <HowToPlay />
           </CardHeader>
@@ -181,7 +187,8 @@ export default function GameScreen() {
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <Badge variant="outline" className="text-lg p-3">
             <Trophy className="w-5 h-5 mr-2" />
-            Score: {foundDifferences.size}/{gameConfig.levels[0].differences.length}
+            Score: {foundDifferences.size}/
+            {gameConfig.levels[0].differences.length}
           </Badge>
           <Badge variant="outline" className="text-lg p-3">
             <Clock className="w-5 h-5 mr-2" />
@@ -191,9 +198,16 @@ export default function GameScreen() {
 
         <div className="flex justify-center gap-4 mb-6">
           {!gameStarted && !gameCompleted && (
-            <Button onClick={startGame} size="lg" className="text-lg px-8">
-              Start Game
-            </Button>
+            <>
+              <Button onClick={startGame} size="lg" variant={"myButton"}>
+                Start Game
+              </Button>
+              <Link to="/">
+                <Button size="lg" variant={"myButton"}>
+                  Main Menu
+                </Button>
+              </Link>
+            </>
           )}
           {(gameStarted || gameCompleted) && (
             <Button onClick={resetGame} variant="outline" size="lg">
@@ -211,8 +225,8 @@ export default function GameScreen() {
                 Congratulations! 🎉
               </h2>
               <p className="text-green-700">
-                You found all {gameConfig.levels[0].differences.length} differences in{" "}
-                {formatTime(elapsedTime)}!
+                You found all {gameConfig.levels[0].differences.length}{" "}
+                differences in {formatTime(elapsedTime)}!
               </p>
             </CardContent>
           </Card>
